@@ -1,0 +1,5 @@
+{
+  "name": "Project Workflow Tracker",
+  "description": "A simple application to track the workflow of a project, including client details, layout, task checklist with collaborators, and a delivery date.",
+  "requestFramePermissions": []
+}
