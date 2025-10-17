@@ -21,6 +21,7 @@ const initialTasks: Task[] = [
 
 const App: React.FC = () => {
   const [clientName, setClientName] = useState('Leonardo Condé');
+  const [serviceType, setServiceType] = useState('Comunicação Visual');
   const [layoutImage, setLayoutImage] = useState<File | null>(null);
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [deliveryDate, setDeliveryDate] = useState<string>('');
@@ -50,6 +51,7 @@ const App: React.FC = () => {
     event.preventDefault();
     const projectData = {
         clientName,
+        serviceType,
         layoutImage: layoutImage ? { name: layoutImage.name, type: layoutImage.type, size: layoutImage.size } : null,
         tasks,
         deliveryDate
@@ -119,13 +121,27 @@ const App: React.FC = () => {
                     placeholder="Nome do cliente"
                   />
                 </div>
+                
+                <div>
+                  <label htmlFor="service-type" className="text-xl font-semibold text-gray-700 mb-2 block">
+                    Tipo de Serviço:
+                  </label>
+                  <input
+                    type="text"
+                    id="service-type"
+                    value={serviceType}
+                    onChange={(e) => setServiceType(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-3xl font-bold"
+                    placeholder="Tipo de Serviço"
+                  />
+                </div>
 
                 <ImageUploader onFileSelect={handleFileSelect} initialImageUrl="https://picsum.photos/id/1060/800/400" />
               </div>
 
               <div className="border-t border-gray-200 pt-6">
                 <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">Checklist de Etapas</h2>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <div className="flex items-center justify-between py-2 px-4 bg-gray-50 rounded-t-lg">
                       <span className="font-semibold text-gray-600">Tarefa</span>
                       <span className="font-semibold text-gray-600">Colaborador</span>
